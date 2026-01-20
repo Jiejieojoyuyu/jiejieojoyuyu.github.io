@@ -3,8 +3,8 @@
 I'm currently pursuing a Master's degree in XX at the Department of XX, XX University, XX.
 
 #### Email  
-<code>XX@XX.XX</code>  
-<code>XX@XX.XX</code>
+<code>1208892444@qq.com</code>  
+<code>213231128@seu.edu.cn</code>
 
 #### Education  
 **XX University**, Master of XX (XX – XX)  
