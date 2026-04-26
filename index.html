@@ -1,192 +1,677 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Academic Webpage" />
-    <meta name="author" content="yixin0313" />
-    <title id="title"></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>黄煜杰 | 个人主页</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2c5282;
+      --accent: #c9a227;
+      --accent-hover: #b8941f;
+      --bg: #f7fafc;
+      --card-bg: #ffffff;
+      --text: #1a202c;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+    }
 
-    <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    html { scroll-behavior: smooth; }
 
-    <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
-        rel="stylesheet" />
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/main.css" rel="stylesheet" />
+    a { color: var(--primary-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent); }
 
-    <!-- Bootstrap core JS-->
-    <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-    <!-- For Compatability -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
 
-    <!-- Markdown -->
-    <script type="text/javascript" src="static/js/marked.min.js"></script>
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 50%;
+    }
 
-    <!-- Mathematics -->
-    <script>
-        // See https://docs.mathjax.org/en/latest/index.html for more details.
-        MathJax = {
-            tex: {
-                packages: {},              // extensions to use
-                inlineMath: [              // start/end delimiter pairs for in-line math
-                    ['$', '$'],
-                    ['\\(', '\\)']
-                ],
-                displayMath: [             // start/end delimiter pairs for display math
-                    ['$$', '$$'],
-                    ['\\[', '\\]']
-                ],
-                processEscapes: false,      // use \$ to produce a literal dollar sign
-                processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
-                processRefs: true,         // process \ref{...} outside of math mode
-                digits: /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/,    // pattern for recognizing numbers
-                tags: 'all',              // or 'ams' or 'all'
-                tagSide: 'right',          // side for \tag macros
-                tagIndent: '0.8em',        // amount to indent tags
-                useLabelIds: true,         // use label name rather than tag for ids
-                maxMacros: 10000,          // maximum number of macro substitutions per expression
-                maxBuffer: 5 * 1024,       // maximum size for the internal TeX string (5K)
-                // baseURL:                   // URL for use with links to tags (when there is a <base> tag in effect)
-                // (document.getElementsByTagName('base').length === 0) ? '' : String(document.location).replace(/#.*$/, ''),
-                formatError:               // function called when TeX syntax errors occur
-                    (jax, err) => jax.formatError(err)
-            }
-        };
-    </script>
-    <script type="text/javascript" id="MathJax-script"
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-    <script type="text/javascript" id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    header .container { position: relative; z-index: 1; }
 
-    <!-- Core JS-->
-    <script type="text/javascript" src="static/js/scripts.js"></script>
-    <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
 
+    .avatar-wrap {
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 4px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .hero-info { flex: 1; min-width: 280px; }
+
+    .hero-info h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .hero-tag {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 20px;
+    }
+
+    .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+    .hero-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.2s;
+    }
+
+    .hero-links a:hover {
+      background: rgba(255,255,255,0.22);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* Section */
+    section { padding: 56px 0; }
+
+    section:nth-child(even) { background: var(--bg); }
+    section:nth-child(odd) { background: var(--card-bg); }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Education */
+    .edu-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .edu-header h3 { font-size: 1.2rem; color: var(--primary); }
+    .edu-header .time { color: var(--text-muted); font-size: 0.9rem; }
+
+    .edu-school { color: var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem; }
+
+    .edu-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stat-item {
+      background: var(--bg);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .stat-item strong { color: var(--primary); font-size: 1.05rem; }
+
+    .courses { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+    .courses strong { color: var(--primary); }
+
+    /* Experience */
+    .exp-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .exp-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .exp-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .exp-header h3 { font-size: 1.05rem; color: var(--primary); font-weight: 600; }
+    .exp-header .role {
+      font-size: 0.82rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: var(--primary);
+      color: white;
+      font-weight: 500;
+    }
+    .exp-header .time { color: var(--text-muted); font-size: 0.88rem; white-space: nowrap; }
+
+    .exp-item p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; }
+    .exp-item .contribution { margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; }
+    .exp-item .contribution strong { color: var(--primary-light); }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+    .project-card h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
+    .project-card .tech {
+      font-size: 0.8rem;
+      color: var(--accent-hover);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .project-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Awards */
+    .award-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 12px;
+    }
+
+    .award-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .award-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #d4af37);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .award-text { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5; }
+    .award-text strong { color: var(--primary); }
+
+    /* Skills */
+    .skill-groups { display: flex; flex-direction: column; gap: 24px; }
+
+    .skill-group h4 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .skill-tag.highlight {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Research Interests */
+    .interest-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .interest-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .interest-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+    .interest-item h3 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .interest-item p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .interest-item ul {
+      margin-top: 8px;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .interest-item ul li { margin-bottom: 4px; }
+
+    /* Contact */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-item svg { width: 20px; height: 20px; color: var(--accent-hover); flex-shrink: 0; }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 24px 0;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      header { padding: 48px 0 40px; }
+      .hero { flex-direction: column; text-align: center; gap: 28px; }
+      .hero-info h1 { font-size: 2rem; }
+      .hero-meta { justify-content: center; }
+      .hero-links { justify-content: center; }
+      .avatar { width: 130px; height: 162px; }
+      .edu-header { flex-direction: column; }
+      .exp-header { flex-direction: column; gap: 4px; }
+      .award-list { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+<body>
 
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
-        <div class="container px-5">
-            <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top"></a>
-            <!-- <a href="#page-top"><img src="static/assets/img/CUMT_LOGO.svg" style="width: 11rem;"></a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                MENU
-                <i class="bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#home">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#awards">AWARDS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#experience">EXPERIENCE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#publications">PUBLICATIONS</a>
-                    </li>
-                </ul>
-            </div>
+  <header>
+    <div class="container">
+      <div class="hero">
+        <div class="avatar-wrap">
+          <img src="avatar.jpg" alt="黄煜杰" class="avatar">
         </div>
-    </nav>
-
-    <!-- Top Section -->
-    <section class="top-section" style="background-image: url('static/assets/img/background.jpeg');">
-        <div class="top-section-content">
-            <div class="container px-5">
-                <h2 id="top-section-bg-text" class="text-white display-3 lh-1 font-alt"></h2>
-            </div>
+        <div class="hero-info">
+          <h1>黄煜杰</h1>
+          <div class="hero-meta">
+            <span>📍 东南大学人工智能学院</span>
+            <span>🎖 中共预备党员</span>
+            <span>📞 150-5290-6926</span>
+          </div>
+          <div class="hero-links">
+            <a href="mailto:213231128@seu.edu.cn" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              邮箱
+            </a>
+            <a href="https://github.com/Jiejieojoyuyu" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
         </div>
-    </section>
-    <!-- Top Section -->
-
-    <!-- Photo -->
-    <div class="container px-5">
-        <div id="avatar">
-            <img class="shadow" src="static/assets/img/photo.png">
-        </div>
+      </div>
     </div>
-    <!-- Photo -->
+  </header>
 
-    <!-- Home -->
-    <section class="bg-gradient-primary-to-secondary-light mt5 md5" id="home">
-        <div class="container px-5">
-            <header>
-                <h2 id="home-subtitle"> </h2>
-                <!-- <span class="bi bi-list"></span> -->
-            </header>
-            <div class="main-body" id="home-md"></div>
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">教育经历</h2>
+      <div class="edu-card">
+        <div class="edu-header">
+          <h3>东南大学 · 人工智能专业 / 本科</h3>
+          <span class="time">2023.09 — 至今</span>
         </div>
-    </section>
-    <!-- Home -->
-
-    <!-- Awards -->
-    <section class="bg-gradient-primary-to-secondary-light mt5 md5" id="awards">
-        <div class="container px-5">
-            <header>
-                <h2 id="awards-subtitle"><i class="bi bi-award-fill"></i>AWARDS </h2>
-            </header>
-            <div class="main-body" id="awards-md"></div>
-
+        <div class="edu-stats">
+          <div class="stat-item">
+            <div><strong>GPA</strong> 4.475 / 4.80</div>
+          </div>
+          <div class="stat-item">
+            <div><strong>均分</strong> 94.72 / 100</div>
+          </div>
+          <div class="stat-item">
+            <div><strong>排名</strong> 1 / 128（前1%）</div>
+          </div>
         </div>
-    </section>
-    <!-- Awards -->
-
-    <!-- Experience -->
-    <section class="bg-gradient-primary-to-secondary-dark mt5 md5" id="experience">
-        <div class="container px-5">
-            <header>
-                <h2 id="experience-subtitle"><i class="bi bi-briefcase-fill"></i> EXPERIENCE </h2>
-            </header>
-            <div class="main-body" id="experience-md"></div>
+        <div class="courses">
+          <strong>核心课程：</strong>工科数学分析（100）、C++程序设计（99）、机器学习（98）、最优化方法（98）、模式识别（98）、数字逻辑电路（98）、计算机视觉（97）、自然语言处理（95）、大学物理（97）等
         </div>
-    </section>
-    <!-- Experience -->
+      </div>
+    </div>
+  </section>
 
-    <!-- Publications -->
-    <section class="bg-gradient-primary-to-secondary-gray mt5 md5" id="publications">
-        <div class="container px-5">
-            <header>
-                <h2 id="publications-subtitle"><i class="bi bi-file-text-fill"></i>&nbsp;PUBLICATIONS</h2>
-            </header>
-            <div class="main-body" id="publications-md"></div>
-
-        </div>
-    </section>
-    <!-- Publications  -->
-
-    <!-- Footer-->
-    <footer class="bg-bottom text-center py-5">
-        <div class="container px-5">
-            <div class="text-white-50 small">
-                <div id="copyright-text" class="mb-2"></div>
-                <a id="github-link" href="https://github.com/senli1073">Github</a>
-                <span class="mx-1">&middot;</span>
-                <a id="license-link"
-                    href="https://github.com/senli1073/senli1073.github.io/blob/main/LICENSE">License</a>
+  <section id="research">
+    <div class="container">
+      <h2 class="section-title">科研经历</h2>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-header">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <h3>ImpQuant：细粒度重要性感知 LVLM 后训练量化</h3>
+              <span class="role">成员</span>
             </div>
+            <span class="time">2025.12 — 2026.01</span>
+          </div>
+          <p>提出 ImpQuant，一种面向视觉-语言大模型的后训练量化方法，通过 token 级重要性建模重加权校准损失，并采用异常通道感知的激活量化，优先保护决策关键 token 的精度。在多 VQA 基准上低比特精度稳定优于主流 PTQ 基线，并缓解量化诱发幻觉。</p>
+          <p class="contribution"><strong>贡献：</strong>ICML under review（三作）</p>
         </div>
-    </footer>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <h3>图像中波动结构识别方法对比与评测项目</h3>
+              <span class="role">负责人</span>
+            </div>
+            <span class="time">2024.09 — 2025.09</span>
+          </div>
+          <p>负责主流目标识别模型在气辉图像中重力波识别任务的系统评测，涵盖 YOLO 系列、DETR 系列、RCNN 家族及 RetinaNet 等模型。针对长时序图像特征设计增强识别模型，实现在特定场景下高识别精度与稳定性。</p>
+          <p class="contribution"><strong>贡献：</strong>负责人；全流程模型训练及推理</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <h3>基于脑电模态与视频模态的抑郁症诊断系统实现</h3>
+              <span class="role">成员</span>
+            </div>
+            <span class="time">2024.09 — 2025.09</span>
+          </div>
+          <p>参与多模态抑郁症诊断系统研究，复现并分析了部分 EEG、视频、语音等模态相关模型。阅读大量前沿文献，深入理解跨模态特征共享、注意力协同与对比学习机制，显著提升了科研分析与模型实现能力。</p>
+          <p class="contribution"><strong>贡献：</strong>构建工具链并发布至 PyPI 及部分 UI 界面构建</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">工程实践</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Handmade 大模型推理框架</h3>
+          <span class="tech">PyTorch / Triton / torch.distributed</span>
+          <p>从零实现大模型推理框架，覆盖单卡 baseline 与 4xH100 分布式服务两套路径，支持 Qwen3.5 MoE 模型加载、离线生成、服务化部署与 benchmark。实现 runtime、continuous batching scheduler、tensor parallel 分布式上下文、Paged KV Cache、KV 压缩与 Triton 算子，并提供 SSE 流式接口。</p>
+        </div>
+
+        <div class="project-card">
+          <h3>学术论文推荐系统</h3>
+          <span class="tech">FastAPI / Vue3 / TypeScript</span>
+          <p>采用 FastAPI + Vue3 + TypeScript 搭建前后端分离系统，完成检索、论文详情、学者画像、个人工作台等模块。围绕推荐与智能分析场景设计混合搜索、语义搜索与个性化重排序接口，引入 FAISS 向量库实现语义检索/召回，并补充 OpenAlex 数据爬取模块。使用 ECharts、D3.js / G6 实现引用网络、合作图谱与研究趋势可视化。</p>
+        </div>
+
+        <div class="project-card">
+          <h3>SEU SASTA 任务协作平台</h3>
+          <span class="tech">Next.js 15 / Supabase</span>
+          <p>面向东南大学校学生科协任务发放与审阅场景，使用 Next.js 15 + TypeScript + Supabase 开发任务协作平台，覆盖登录鉴权、任务发布/领取/提交/审核全流程。设计管理后台，支持用户角色管理、任务检索、审核队列处理与统计看板。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="container">
+      <h2 class="section-title">曾获奖项</h2>
+      <div class="award-list">
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div class="award-text"><strong>2023-2024 国家奖学金</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div class="award-text"><strong>2024-2025 东南大学校长奖学金</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥈</div>
+          <div class="award-text">2024 高教社杯全国大学生数学建模竞赛 <strong>国家级二等奖</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥉</div>
+          <div class="award-text">2024 ICPC 区域赛 <strong>铜奖</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥈</div>
+          <div class="award-text">2025 JSCPC <strong>银奖</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥈</div>
+          <div class="award-text">第十五届蓝桥杯全国总决赛 C/C++ 程序设计 <strong>二等奖</strong></div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥇</div>
+          <div class="award-text">第十六届全国大学生数学竞赛江苏赛区（非数学A类）<strong>一等奖</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">技能与特长</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h4>💻 编程语言与框架</h4>
+          <div class="skill-tags">
+            <span class="skill-tag highlight">C++</span>
+            <span class="skill-tag highlight">Python</span>
+            <span class="skill-tag">Matlab</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag highlight">PyTorch</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Vue3</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Triton</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>🧮 数学能力</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">工科数学分析 100分</span>
+            <span class="skill-tag">概率论 100分</span>
+            <span class="skill-tag">离散数学 99分</span>
+            <span class="skill-tag">全国大学生数学竞赛 省一等奖</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>🌐 语言能力</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">CET-4 635分</span>
+            <span class="skill-tag">CET-6 576分</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>👤 学生工作</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">东南大学校学生科协竞赛部主席</span>
+            <span class="skill-tag">曾任校学生科协研学部部长</span>
+            <span class="skill-tag">计软智非毕本党支部副书记</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="container">
+      <h2 class="section-title">目前研究方向</h2>
+      <div class="interest-list">
+        <div class="interest-item">
+          <h3>🔬 下一代神经网络范式</h3>
+          <p>探索超越 Transformer 架构的新型神经网络范式，致力于构建在<strong>拓扑结构和数据分布上均具备自我演进能力</strong>的认知架构。融合符号推理与神经计算，实现类人思维的分层抽象、因果发现与假设检验能力，使模型能够根据任务需求动态调整计算路径与表征空间。</p>
+        </div>
+        <div class="interest-item">
+          <h3>🧠 大模型知识编辑与对齐</h3>
+          <p>大语言模型知识编辑（Knowledge Editing）与基于小样本选择的高效对齐方法。研究如何在不重新训练整个模型的前提下，精准更新模型内部知识；同时探索数据选择与课程学习策略，以极少标注样本实现模型行为对齐与价值观校准。</p>
+        </div>
+        <div class="interest-item">
+          <h3>⚡ AI Infra 与系统优化</h3>
+          <p>聚焦大模型全链路系统优化，具体包括：</p>
+          <ul>
+            <li>分布式训练框架与通信优化（ZeRO、FSDP、Megatron-LM）</li>
+            <li>模型量化、剪枝与蒸馏等推理加速技术</li>
+            <li>KV Cache 管理与内存优化（PagedAttention、KV 压缩）</li>
+            <li>Continuous Batching 与动态调度策略</li>
+            <li>Tensor / Pipeline / Sequence Parallelism 混合并行</li>
+            <li>高性能算子开发（Triton、CUDA Kernel）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">联系方式</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:213231128@seu.edu.cn">213231128@seu.edu.cn</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>150-5290-6926</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>东南大学人工智能学院</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <a href="https://github.com/Jiejieojoyuyu" target="_blank">github.com/Jiejieojoyuyu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 黄煜杰 · 东南大学人工智能学院</p>
+    </div>
+  </footer>
 
 </body>
-
 </html>
